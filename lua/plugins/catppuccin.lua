@@ -5,11 +5,11 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			local latte = require("catppuccin.palettes").get_palette("latte")
-			local frappe = require("catppuccin.palettes").get_palette("frappe")
-			local macchiato = require("catppuccin.palettes").get_palette("macchiato")
-			local mocha = require("catppuccin.palettes").get_palette("mocha")
 			require("catppuccin").setup({
+				latte = require("catppuccin.palettes").get_palette("latte"),
+				frappe = require("catppuccin.palettes").get_palette("frappe"),
+				macchiato = require("catppuccin.palettes").get_palette("macchiato"),
+				mocha = require("catppuccin.palettes").get_palette("mocha"),
 				flavour = "auto", -- latte, frappe, macchiato, mocha
 				background = { -- :h background
 					light = "latte",
@@ -44,32 +44,32 @@ return {
 				color_overrides = {
 
 					mocha = {
-						rosewater = "#efc9c2",
-						flamingo = "#ebb2b2",
-						pink = "#f2a7de",
-						mauve = "#b889f4",
-						red = "#ea7183",
-						maroon = "#ea838c",
-						peach = "#f39967",
-						yellow = "#eaca89",
-						green = "#96d382",
-						teal = "#78cec1",
-						sky = "#91d7e3",
-						sapphire = "#68bae0",
-						blue = "#739df2",
-						lavender = "#a0a8f6",
-						text = "#b5c1f1",
-						subtext1 = "#a6b0d8",
-						subtext0 = "#959ec2",
-						overlay2 = "#848cad",
-						overlay1 = "#717997",
-						overlay0 = "#63677f",
-						surface2 = "#505469",
-						surface1 = "#3e4255",
-						surface0 = "#2c2f40",
-						base = "#1a1c2a",
-						mantle = "#141620",
-						crust = "#0e0f16",
+						rosewater = "#F5B8AB",
+						flamingo = "#F29D9D",
+						pink = "#AD6FF7",
+						mauve = "#FF8F40",
+						red = "#E66767",
+						maroon = "#EB788B",
+						peach = "#FAB770",
+						yellow = "#FACA64",
+						green = "#70CF67",
+						teal = "#4CD4BD",
+						sky = "#61BDFF",
+						sapphire = "#4BA8FA",
+						blue = "#00BFFF",
+						lavender = "#00BBCC",
+						text = "#C1C9E6",
+						subtext1 = "#A3AAC2",
+						subtext0 = "#8E94AB",
+						overlay2 = "#7D8296",
+						overlay1 = "#676B80",
+						overlay0 = "#464957",
+						surface2 = "#3A3D4A",
+						surface1 = "#2F313D",
+						surface0 = "#1D1E29",
+						base = "#0b0b12",
+						mantle = "#11111a",
+						crust = "#191926",
 					},
 				},
 				custom_highlights = {},
@@ -83,6 +83,10 @@ return {
 					mini = {
 						enabled = true,
 						indentscope_color = "",
+					},
+					telescope = {
+						enabled = true,
+						style = "mocha",
 					},
 					-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 				},
