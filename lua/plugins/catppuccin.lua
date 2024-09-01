@@ -51,7 +51,7 @@ return {
 						red = "#E66767",
 						maroon = "#EB788B",
 						peach = "#FAB770",
-						yellow = "#FACA64",
+						yellow = "#faca64",
 						green = "#70CF67",
 						teal = "#4CD4BD",
 						sky = "#61BDFF",
