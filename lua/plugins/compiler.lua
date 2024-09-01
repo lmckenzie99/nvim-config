@@ -19,9 +19,7 @@ return {
 		},
 	},
 
-	
-		vim.api.nvim_set_keymap("n", "<F6>", "<cmd>CompilerOpen<CR>", {}),
-		vim.api.nvim_set_keymap("n", "<S-F6>", "<cmd>CompilerStop<CR>" .. "<cmd>CompilerRedo<CR>", {}),
-		vim.api.nvim_set_keymap("n", "<S-F7>", "<cmd>CompilerToggleResults", {}),
-
+	vim.api.nvim_set_keymap("n", "<Leader>co", "<cmd>CompilerOpen<CR>", {}),
+	vim.api.nvim_set_keymap("n", "<S-F6>", "<cmd>CompilerStop<CR>" .. "<cmd>CompilerRedo<CR>", {}),
+	vim.api.nvim_set_keymap("n", "<S-F7>", "<cmd>CompilerToggleResults", {}),
 }
