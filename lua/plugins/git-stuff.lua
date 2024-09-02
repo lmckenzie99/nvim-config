@@ -6,7 +6,7 @@ return {
 			vim.keymap.set("n", "<Leader>gc", ":Git commit<CR>", {})
 			vim.keymap.set("n", "<Leader>gl", ":Git pull<CR>", {})
 			vim.keymap.set("n", "<Leader>gm", ":Git merge<CR>", {})
-            vim.keymap.set("n", "<Leader>ga", ":Git add .<CR>", {})
+			vim.keymap.set("n", "<Leader>ga", ":Git add .<CR>", {})
 		end,
 	},
 
