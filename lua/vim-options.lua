@@ -8,6 +8,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.api.nvim_set_keymap("i", "<C-s>", "<ESC>:w<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-s>", "<ESC>:wa<CR>", {})
-vim.keymap.set({"n", "i"}, "<Leader>u", "<ESC>:u<CR>", {})
+vim.keymap.set({"n", "i"}, "<C-u>", "<ESC>:u<CR>", {})
 
 
