@@ -10,14 +10,18 @@ return {
 
 		dap.adapters.codelldb = {
 			type = "server",
-            port = "${port}",
-            executable = {
-                command = vim.fn.stdpath('data')..'/mason/bin/codelldb',
-                args = {"--port", "${port}"},
-                detatched = function() if vim.fn.has('wiin32') == 1 then return false else return true end end,
-
-            }
-            
+			port = "${port}",
+			executable = {
+				command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+				args = { "--port", "${port}" },
+				detatched = function()
+					if vim.fn.has("wiin32") == 1 then
+						return false
+					else
+						return true
+					end
+				end,
+			},
 		}
 		dap.configurations.cpp = {
 			{
