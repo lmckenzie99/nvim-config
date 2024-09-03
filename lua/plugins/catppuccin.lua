@@ -75,9 +75,13 @@ return {
 				custom_highlights = {},
 				default_integrations = true,
 				integrations = {
+          alpha = true,
+          nvimtree = true,
+          semantic_tokens = false,
+          ts_rainbow = true,
 					cmp = true,
 					gitsigns = true,
-					nvimtree = true,
+					neotree = true,
 					treesitter = true,
 					notify = false,
 					mini = {
