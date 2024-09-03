@@ -11,6 +11,7 @@ return {
             --		return ("<Plug>(cokeline-focus-%s)"):format(vim.v.count > 0 and vim.v.count or "next")
             --	end, { silent = true, expr = true })
             local map = vim.api.nvim_set_keymap
+            
 
             map("n", "<S-Tab>", "<Plug>(cokeline-focus-prev)", { silent = true })
             map("n", "<Tab>", "<Plug>(cokeline-focus-next)", { silent = true })
