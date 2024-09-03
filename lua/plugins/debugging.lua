@@ -8,41 +8,41 @@ return {
 		local dap = require("dap")
 		local dapui = require("dapui")
 
+		local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/extension/"
+		local codelldb_path = extension_path .. "adapter/codelldb"
+
 		dap.adapters.codelldb = {
 			type = "server",
 			port = "${port}",
 			executable = {
-				command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+				command = codelldb_path,
 				args = { "--port", "${port}" },
-				detatched = function()
-					if vim.fn.has("wiin32") == 1 then
-						return false
-					else
-						return true
-					end
-				end,
+
+				-- On windows you may have to uncomment this:
+				-- detached = false,
 			},
 		}
+
 		dap.configurations.cpp = {
 			{
-				name = "Launch",
+				name = "Launch file",
 				type = "codelldb",
 				request = "launch",
 				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/bin/program", "file")
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 				end,
 				cwd = "${workspaceFolder}",
 				stopOnEntry = false,
-				args = {},
 			},
 		}
+    dap.configurations.c = dap.configurations.cpp
+
 		require("dapui").setup()
 		dap.configurations.c = dap.configurations.cpp
 
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
 		end
-
 		dap.listeners.before.launch.dapui_config = function()
 			dapui.open()
 		end
@@ -52,10 +52,11 @@ return {
 		dap.listeners.before.event_exited.dapui_config = function()
 			dapui.close()
 		end
+		vim.keymap.set("n", "<Leader>do", ':lua require("dapui").open()<CR>')
 		vim.keymap.set("n", "<Leader>dr", ':lua require"dap".continue()<CR>')
 		vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
 		vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
 		vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
-		vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
+		vim.keymap.set("n", "<Leader>ds", ":DapStepOver<CR>")
 	end,
 }
