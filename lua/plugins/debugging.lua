@@ -8,13 +8,13 @@ return {
 		local dap = require("dap")
 		local dapui = require("dapui")
 
-		local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/extension/"
-		local codelldb_path = extension_path .. "adapter/codelldb"
+	--	local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/extension/"
+--		local codelldb_path = extension_path .. "adapter/codelldb"
 
 		dap.adapters.gdb = {
 			type = "executable",
 			command = "gdb",
-			args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
+			args = { "--interpreter=dap",},
 		}
 		dap.configurations.cpp = {
 			{
@@ -22,23 +22,10 @@ return {
 				type = "gdb",
 				request = "launch",
 				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/bin/program", "file")
 				end,
 				cwd = "${workspaceFolder}",
 				stopAtBeginningOfMainSubprogram = false,
-			},
-			{
-				name = "Select and attach to process",
-				type = "gdb",
-				request = "attach",
-				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-				end,
-				pid = function()
-					local name = vim.fn.input("Executable name (filter): ")
-					return require("dap.utils").pick_process({ filter = name })
-				end,
-				cwd = "${workspaceFolder}",
 			},
 			{
 				name = "Attach to gdbserver :1234",
@@ -46,7 +33,7 @@ return {
 				request = "attach",
 				target = "localhost:1234",
 				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/bin/program", "file")
 				end,
 				cwd = "${workspaceFolder}",
 			},
