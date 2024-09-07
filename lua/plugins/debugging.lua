@@ -22,7 +22,7 @@ return {
 				type = "gdb",
 				request = "launch",
 				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/bin/program", "file")
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 				end,
 				cwd = "${workspaceFolder}",
 				stopAtBeginningOfMainSubprogram = false,
@@ -33,7 +33,7 @@ return {
 				request = "attach",
 				target = "localhost:1234",
 				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/bin/program", "file")
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 				end,
 				cwd = "${workspaceFolder}",
 			},
