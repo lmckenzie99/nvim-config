@@ -3,43 +3,43 @@ return {
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio",
-	},
+	
+},
+  
 	config = function()
 		local dap = require("dap")
 		local dapui = require("dapui")
 
-	--	local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/extension/"
---		local codelldb_path = extension_path .. "adapter/codelldb"
+		local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/extension/"
+		local codelldb_path = extension_path .. "adapter/codelldb"
 
-		dap.adapters.gdb = {
-			type = "executable",
-			command = "gdb",
-			args = { "--interpreter=dap",},
+		dap.adapters.codelldb = {
+			type = "server",
+			port = "${port}",
+			executable = {
+				command = codelldb_path,
+				args = { "--port", "${port}" },
+
+				-- On windows you may have to uncomment this:
+				-- detached = false,
+			},
 		}
+
 		dap.configurations.cpp = {
 			{
-				name = "Launch",
-				type = "gdb",
+				name = "Launch file",
+				type = "codelldb",
 				request = "launch",
 				program = function()
 					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 				end,
 				cwd = "${workspaceFolder}",
-				stopAtBeginningOfMainSubprogram = false,
-			},
-			{
-				name = "Attach to gdbserver :1234",
-				type = "gdb",
-				request = "attach",
-				target = "localhost:1234",
-				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-				end,
-				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
 			},
 		}
 		require("dapui").setup()
 		dap.configurations.c = dap.configurations.cpp
+		dap.configurations.rs = dap.configurations.cpp
 
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
