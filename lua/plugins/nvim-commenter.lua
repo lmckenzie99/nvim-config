@@ -1,3 +1,3 @@
 return{
-  'terrortylor/nvim-comment',
+  {'terrortylor/nvim-comment'},
 }
