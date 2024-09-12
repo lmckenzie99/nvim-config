@@ -15,3 +15,6 @@ vim.keymap.set("n", "h", "<LEFT>", {})
 vim.keymap.set("n", "j", "<UP>", {})
 vim.keymap.set("n", "l", "<RIGHT>", {})
 vim.keymap.set("n", "k", "<DOWN>", {})
+
+vim.cmd [[command! Qa :qa]]
+vim.cmd [[command! Q :q]]
