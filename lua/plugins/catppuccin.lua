@@ -60,7 +60,7 @@ return {
           functions = {},
           keywords = {},
           strings = {"italic"},
-          variables = {""},
+          variables = {},
           numbers = {},
           booleans = {},
           properties = {},
