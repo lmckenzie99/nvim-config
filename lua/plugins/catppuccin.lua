@@ -76,6 +76,8 @@ return {
 				default_integrations = true,
 				integrations = {
           alpha = true,
+          harpoon = true,
+          rainbow_delimiters = true,
           nvimtree = true,
           semantic_tokens = false,
           ts_rainbow = true,
