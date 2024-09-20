@@ -23,17 +23,44 @@ return {
           shade = "dark",
           percentage = 0.15,        -- percentage of the shade to apply to the inactive window
         },
-        no_italic = false,          -- Force no italic
-        no_bold = false,            -- Force no bold
-        no_underline = false,       -- Force no underline
-        styles = {                  -- Handles the styles of general hi groups (see `:h highlight-args`):
-          comments = { "italic" },  -- Change the style of comments
+        highlight_overrides = {
+          all = function(colors)
+            return {
+              CurSearch = { bg = colors.sky },
+              IncSearch = { bg = colors.sky },
+              CursorLineNr = { fg = colors.blue, style = { "bold" } },
+              DashboardFooter = { fg = colors.overlay0 },
+              TreesitterContextBottom = { style = {} },
+              WinSeparator = { fg = colors.overlay0, style = { "bold" } },
+              ["@markup.italic"] = { fg = colors.blue, style = { "italic" } },
+              ["@markup.strong"] = { fg = colors.blue, style = { "bold" } },
+              Headline = { style = { "bold" } },
+              Headline1 = { fg = colors.blue, style = { "bold" } },
+              Headline2 = { fg = colors.pink, style = { "bold" } },
+              Headline3 = { fg = colors.lavender, style = { "bold" } },
+              Headline4 = { fg = colors.green, style = { "bold" } },
+              Headline5 = { fg = colors.peach, style = { "bold" } },
+              Headline6 = { fg = colors.flamingo, style = { "bold" } },
+              rainbow1 = { fg = colors.blue, style = { "bold" } },
+              rainbow2 = { fg = colors.pink, style = { "bold" } },
+              rainbow3 = { fg = colors.lavender, style = { "bold" } },
+              rainbow4 = { fg = colors.green, style = { "bold" } },
+              rainbow5 = { fg = colors.peach, style = { "bold" } },
+              rainbow6 = { fg = colors.flamingo, style = { "bold" } },
+            }
+          end,
+        },
+        no_italic = false,    -- Force no italic
+        no_bold = false,      -- Force no bold
+        no_underline = false, -- Force no underline
+        styles = {            -- Handles the styles of general hi groups (see `:h highlight-args`):
+          comments = { "italic" }, -- Change the style of comments
           conditionals = { "italic" },
           loops = {},
           functions = {},
           keywords = {},
-          strings = {},
-          variables = {},
+          strings = {"italic"},
+          variables = {""},
           numbers = {},
           booleans = {},
           properties = {},
@@ -57,7 +84,7 @@ return {
             sky = "#61BDFF",
             sapphire = "#4BA8FA",
             blue = "#00BFFF",
-            lavender = "#00BBCC",
+            lavender = "#A07BB6",
             text = "#C1C9E6",
             subtext1 = "#A3AAC2",
             subtext0 = "#8E94AB",
@@ -96,10 +123,9 @@ return {
           },
           indent_blankline = {
             enabled = true,
-            scope_color = "mocha", -- catppuccin color (eg. `lavender`) Default: text
+            scope_color = "mocha",
             colored_indent_levels = false,
           },
-          -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
       })
 
