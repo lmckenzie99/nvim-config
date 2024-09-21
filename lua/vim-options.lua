@@ -10,11 +10,8 @@ vim.api.nvim_set_keymap("i", "<C-s>", "<ESC>:w<CR>", { noremap = true, silent = 
 vim.api.nvim_set_keymap("n", "<C-s>", "<ESC>:wa<CR>", {})
 vim.keymap.set({ "n", "i" }, "<C-u>", "<ESC>:u<CR>", {})
 
---yeah I remapped hjkl, get over it
-vim.keymap.set("n", "h", "<LEFT>", {})
-vim.keymap.set("n", "j", "<UP>", {})
-vim.keymap.set("n", "l", "<RIGHT>", {})
-vim.keymap.set("n", "k", "<DOWN>", {})
 
+vim.keymap.set("n", "<Leader>id", ":IBLDisableScope<CR>", {})
+vim.keymap.set("n", "<Leader>ie", ":IBLEnableScope<CR>", {})
 vim.cmd [[command! Qa :qa]]
 vim.cmd [[command! Q :q]]
