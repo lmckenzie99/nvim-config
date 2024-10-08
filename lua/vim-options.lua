@@ -13,5 +13,6 @@ vim.keymap.set({ "n", "i" }, "<C-u>", "<ESC>:u<CR>", {})
 
 vim.keymap.set("n", "<Leader>id", ":IBLDisableScope<CR>", {})
 vim.keymap.set("n", "<Leader>ie", ":IBLEnableScope<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>cr", ":!g++ % -o temp<CR>", {noremap = true, silent = true})
 vim.cmd [[command! Qa :qa]]
 vim.cmd [[command! Q :q]]
