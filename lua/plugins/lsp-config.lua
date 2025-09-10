@@ -30,9 +30,9 @@ return {
 		config = function()
 			local capabilities =
 				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-			-- Setup required for ufo
-
 			local lspconfig = require("lspconfig")
+			
+			-- Your existing LSP servers
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
@@ -45,6 +45,39 @@ return {
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
 			})
+
+			-- Asteroid LSP setup
+			local configs = require('lspconfig.configs')
+			if not configs.asteroid then
+				configs.asteroid = {
+					default_config = {
+						cmd = { 'node', vim.fn.expand('~/.local/share/asteroid-lsp/out/server.js'), '--stdio' },
+						filetypes = { 'asteroid' },
+						root_dir = lspconfig.util.root_pattern('.git', 'package.json', '.asteroid-project'),
+						settings = {
+							asteroid = {
+								enableSyntaxHighlighting = true,
+								enableAutocompletion = true,
+								enableDiagnostics = true,
+							}
+						}
+					}
+				}
+			end
+
+			lspconfig.asteroid.setup({
+				capabilities = capabilities,
+			})
+
+			-- Filetype detection for Asteroid files
+			vim.filetype.add({
+				extension = {
+					ast = 'asteroid',
+					asteroid = 'asteroid',
+				},
+			})
+
+			-- Your existing keymaps (unchanged)
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})

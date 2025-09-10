@@ -9,7 +9,7 @@ vim.g.maplocalleader = "\\"
 vim.api.nvim_set_keymap("i", "<C-s>", "<ESC>:w<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-s>", "<ESC>:wa<CR>", {})
 vim.keymap.set({ "n", "i" }, "<C-u>", "<ESC>:u<CR>", {})
-vim.keymap.set({ "n", "i" }, "<Leader>st", "<ESC>:split<CR> :terminal<CR>", {})
+vim.keymap.set( "n" , "<Leader>st", "<ESC>:split<CR> :terminal<CR>", {})
 vim.keymap.set("n", "<Leader>id", ":IBLDisableScope<CR>", {})
 vim.keymap.set("n", "<Leader>ie", ":IBLEnableScope<CR>", {})
 vim.api.nvim_set_keymap("n", "<Leader>co", ":!g++ % -o temp<CR>", { noremap = true, silent = true })
