@@ -1,5 +1,5 @@
 
-```markdown
+
 # Neovim Config
 
 Welcome to my personal Neovim configuration! This repo is designed for users who want a modern, extensible, and fast development environment powered by [Neovim](https://neovim.io/) and Lua.
@@ -64,4 +64,3 @@ Most plugins in this config are covered under MIT licensing. Check each plugin i
 ---
 
 **Clone, customize, and enjoy coding with Neovim!**
-```
