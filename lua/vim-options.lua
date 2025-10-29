@@ -20,9 +20,8 @@ vim.api.nvim_set_keymap("n", "<Leader>dr", ":split<CR> :terminal<CR> i dart run 
 vim.cmd([[command! Qa :qa]])
 vim.cmd([[command! Q :q]])
 
-vim.api.nvim_create_autocmd("BufReadPre", {
-	pattern = "*.pl",
-	callback = function()
-		vim.bo.filetype = "prolog"
-	end,
+vim.filetype.add({
+  extension = {
+    pl = "prolog",
+  },
 })
