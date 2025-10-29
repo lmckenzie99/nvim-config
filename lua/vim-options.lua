@@ -26,12 +26,3 @@ vim.filetype.add({
 	},
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "prolog",
-  callback = function()
-    -- Trigger neo-tree refresh if it's open
-    vim.schedule(function()
-      vim.cmd("Neotree refresh")
-    end)
-  end,
-})
