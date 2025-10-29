@@ -4,7 +4,7 @@ return {
     require("nvim-web-devicons").setup({
       override_by_extension = {
         ["pl"] = {
-          icon = "",
+          icon = "",
           color = "#E4B854",
           cterm_color = "179",
           name = "Prolog"
