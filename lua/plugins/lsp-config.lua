@@ -30,43 +30,40 @@ return {
 		config = function()
 			local capabilities =
 				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-			local lspconfig = require("lspconfig")
-			
-			-- Your existing LSP servers
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.pylsp.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.clangd.setup({
+
+			-- Configure LSP servers using vim.lsp.config (new API)
+			-- Standard LSP servers
+			vim.lsp.config('lua_ls', {
 				capabilities = capabilities,
 			})
 
-			-- Asteroid LSP setup
-			local configs = require('lspconfig.configs')
-			if not configs.asteroid then
-				configs.asteroid = {
-					default_config = {
-						cmd = { 'node', vim.fn.expand('~/.local/share/asteroid-lsp/out/server.js'), '--stdio' },
-						filetypes = { 'asteroid' },
-						root_dir = lspconfig.util.root_pattern('.git', 'package.json', '.asteroid-project'),
-						settings = {
-							asteroid = {
-								enableSyntaxHighlighting = true,
-								enableAutocompletion = true,
-								enableDiagnostics = true,
-							}
-						}
+			vim.lsp.config('ts_ls', {
+				capabilities = capabilities,
+			})
+
+			vim.lsp.config('pylsp', {
+				capabilities = capabilities,
+			})
+
+			vim.lsp.config('clangd', {
+				capabilities = capabilities,
+			})
+
+			-- Custom Asteroid LSP server configuration
+			vim.lsp.config('asteroid', {
+				cmd = { 'node', vim.fn.expand('~/.local/share/asteroid-lsp/out/server.js'), '--stdio' },
+				filetypes = { 'asteroid' },
+				root_dir = function(filename, bufnr)
+					return vim.fs.root(bufnr, {'.git', 'package.json', '.asteroid-project'})
+				end,
+				capabilities = capabilities,
+				settings = {
+					asteroid = {
+						enableSyntaxHighlighting = true,
+						enableAutocompletion = true,
+						enableDiagnostics = true,
 					}
 				}
-			end
-
-			lspconfig.asteroid.setup({
-				capabilities = capabilities,
 			})
 
 			-- Filetype detection for Asteroid files
@@ -77,7 +74,14 @@ return {
 				},
 			})
 
-			-- Your existing keymaps (unchanged)
+			-- Enable all configured LSP servers
+			vim.lsp.enable('lua_ls')
+			vim.lsp.enable('ts_ls')
+			vim.lsp.enable('pylsp')
+			vim.lsp.enable('clangd')
+			vim.lsp.enable('asteroid')
+
+			-- LSP keymaps
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
