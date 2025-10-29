@@ -9,7 +9,7 @@ vim.g.maplocalleader = "\\"
 vim.api.nvim_set_keymap("i", "<C-s>", "<ESC>:w<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-s>", "<ESC>:wa<CR>", {})
 vim.keymap.set({ "n", "i" }, "<C-u>", "<ESC>:u<CR>", {})
-vim.keymap.set( "n" , "<Leader>st", "<ESC>:split<CR> :terminal<CR>", {})
+vim.keymap.set("n", "<Leader>st", "<ESC>:split<CR> :terminal<CR>", {})
 vim.keymap.set("n", "<Leader>id", ":IBLDisableScope<CR>", {})
 vim.keymap.set("n", "<Leader>ie", ":IBLEnableScope<CR>", {})
 vim.api.nvim_set_keymap("n", "<Leader>co", ":!g++ % -o temp<CR>", { noremap = true, silent = true })
@@ -19,3 +19,10 @@ vim.wo.relativenumber = true
 vim.api.nvim_set_keymap("n", "<Leader>dr", ":split<CR> :terminal<CR> i dart run ", { noremap = true, silent = true })
 vim.cmd([[command! Qa :qa]])
 vim.cmd([[command! Q :q]])
+
+vim.api.nvim_create_autocmd("BufReadPre", {
+	pattern = "*.pl",
+	callback = function()
+		vim.bo.filetype = "prolog"
+	end,
+})
